@@ -23,6 +23,7 @@ def getdif(cdlSum, cdlAtt, dbConn, queryStr):
 
 	nass = pd.DataFrame(nass)
 	cdl = pd.read_csv(cdlSum)[cdlAtt]
+	cdl['county'] = map(lambda x: x*900*0.000247105, cdl['county'])
 	cdl['county'] = cdl['county'].astype(str)
 	nass['acre'] = nass['acre'].astype(np.float64)
 
@@ -35,7 +36,7 @@ def getdif(cdlSum, cdlAtt, dbConn, queryStr):
 	dif = dif.fillna(0)
 	dif = dif[dif > np.percentile(dif, 10)]
 
-	## plot histogram
+	## plot histogram #0.000247105
 	# hist, bins = np.histogram(np.array(dif), bins=50)
 	# width = 0.7 * (bins[1] - bins[0])
 	# center = (bins[:-1] + bins[1:]) / 2
