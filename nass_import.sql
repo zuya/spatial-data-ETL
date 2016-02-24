@@ -1,3 +1,4 @@
+/***execute before copy from stdin***/ 
 -- DROP TABLE IF EXISTS nass.censusdata_0;
 -- 
 -- CREATE TABLE nass.censusdata_0
@@ -42,6 +43,7 @@
 --   value text,
 --   cv_pct text);
 
+/***execute after data imported, convert value field datatype: str->int****/
 -- DROP TABLE IF EXISTS nass.censusdata;
 -- SELECT source_desc, sector_desc, group_desc, commodity_desc, class_desc, 
 -- 	prodn_practice_desc, util_practice_desc, statisticcat_desc, unit_desc, 
