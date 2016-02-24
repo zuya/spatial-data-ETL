@@ -56,6 +56,6 @@
 -- INTO nass.censusdata	
 -- FROM nass.censusdata_0
 
-DROP TABLE IF EXISTS nass.censusdata;
+-- DROP TABLE IF EXISTS nass.censusdata_0;
 
 
