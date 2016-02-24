@@ -23,9 +23,10 @@ def getdif(cdlSum, cdlAtt, dbConn, queryStr):
 
 	nass = pd.DataFrame(nass)
 	cdl = pd.read_csv(cdlSum)[cdlAtt]
-	cdl['county'] = map(lambda x: x*900*0.000247105, cdl['county'])
 	cdl['county'] = cdl['county'].astype(str)
 	nass['acre'] = nass['acre'].astype(np.float64)
+	# convert pixel count to acres 
+	cdl['1'] = cdl['1'].map(lambda x: x*900*0.000247105)
 
 	cdl = cdl.merge(pd.DataFrame(nass), how='inner', left_on='county', right_on='fips')
 	print type(cdl['1'][0])
